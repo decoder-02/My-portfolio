@@ -1,7 +1,8 @@
 import Navbar from "@/components/navbar";
 import Hero from "@/components/hero";
 import Projects from "@/components/projects";
-import Skills from "@/components/skills";
+import Certifications from "@/components/certifications";
+import Roadmap from "@/components/roadmap";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 
@@ -12,7 +13,8 @@ export default function Home() {
       <main>
         <Hero />
         <Projects />
-        <Skills />
+        <Certifications />
+        <Roadmap />
         <Contact />
       </main>
       <Footer />
