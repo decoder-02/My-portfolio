@@ -46,7 +46,7 @@ export default function Hero() {
           <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-background shadow-2xl relative">
             <img 
               src={profilePic} 
-              alt="Profile" 
+              alt="Akash Rajkumar" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -77,11 +77,11 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8"
         >
-          Building Digital
+          Akash
           <br />
           <span className="relative">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-gray-500 to-primary bg-300% animate-gradient">
-              Experiences
+              Rajkumar
             </span>
             <motion.span 
               initial={{ width: 0 }}
@@ -96,10 +96,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-xl text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed"
+          className="max-w-2xl text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed"
         >
-          I'm Alex, a Software Engineer blending technical precision with 
-          creative design to build accessible, performant, and beautiful web applications.
+          Tech enthusiast with a passion for elegant code and problem-solving. 
+          At 23 years old, I am poised to contribute fresh perspectives and a hunger for learning to a dynamic software environment. 
+          Eager collaborator, committed to crafting efficient solutions and embracing the evolving landscape of software development.
         </motion.p>
 
         <motion.div

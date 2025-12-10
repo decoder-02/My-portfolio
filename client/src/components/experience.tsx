@@ -3,25 +3,25 @@ import { Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
   {
-    role: "Senior Software Engineer",
-    company: "TechFlow Systems",
-    period: "2023 - Present",
-    description: "Leading the frontend migration to Next.js, improving site performance by 40%. Mentoring junior developers and establishing code quality standards.",
-    technologies: ["React", "Next.js", "TypeScript", "AWS"]
+    role: "Data Analyst",
+    company: "PURCHASING POWER",
+    period: "May 2024",
+    description: "Analyzed data sets to identify trends and patterns, contributing to data-driven decision making processes.",
+    technologies: ["Data Analysis", "Reporting"]
   },
   {
-    role: "Software Engineer",
-    company: "Innovate Digital",
-    period: "2021 - 2023",
-    description: "Developed and maintained key features for a high-traffic e-commerce platform. Implemented a new payment gateway integration that increased conversion by 15%.",
-    technologies: ["Vue.js", "Node.js", "PostgreSQL", "Stripe"]
+    role: "Full Stack Java",
+    company: "SHIASH INFO SOLUTIONS PRIVATE LIMITED",
+    period: "Sep 2023",
+    description: "Worked on full-stack Java development, building robust backend services and integrating them with frontend interfaces.",
+    technologies: ["Java", "Full Stack", "Web Development"]
   },
   {
-    role: "Junior Developer",
-    company: "Creative Solutions",
-    period: "2019 - 2021",
-    description: "Collaborated with design teams to implement responsive user interfaces. Assisted in backend API development and database optimization.",
-    technologies: ["React", "Express", "MongoDB", "Sass"]
+    role: "Web Development",
+    company: "NLC INDIA LIMITED",
+    period: "Dec 2022",
+    description: "Gained hands-on experience in web development technologies and corporate software development practices.",
+    technologies: ["Web Technologies", "Development"]
   }
 ];
 
@@ -36,7 +36,7 @@ export default function Experience() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold mb-4"
           >
-            Experience
+            Internship Experience
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -45,7 +45,7 @@ export default function Experience() {
             transition={{ delay: 0.1 }}
             className="text-muted-foreground max-w-2xl"
           >
-            My professional journey and the value I've delivered along the way.
+            Professional experience gained through internships in various domains.
           </motion.p>
         </div>
 

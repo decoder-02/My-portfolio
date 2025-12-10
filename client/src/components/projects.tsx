@@ -1,43 +1,54 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Code } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const projects = [
   {
-    title: "E-Commerce Dashboard",
-    description: "A comprehensive analytics dashboard for online retailers featuring real-time data visualization and inventory management.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Recharts"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    demoLink: "#",
-    codeLink: "#"
+    title: "Leap Motion Robot Maneuver",
+    description: "Intuitive midair control of a robotic car equipped with two DC motors using a Leap Motion sensor and Python. Enables multi-finger gesture control.",
+    tags: ["Python", "Leap Motion", "Robotics", "IoT"],
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
+    date: "Jan 2024"
   },
   {
-    title: "Task Management App",
-    description: "A collaborative task manager with real-time updates, drag-and-drop interface, and team workspaces.",
-    tags: ["Next.js", "Prisma", "PostgreSQL", "Socket.io"],
-    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=800",
-    demoLink: "#",
-    codeLink: "#"
+    title: "Analysis on Stroke Disease",
+    description: "Developed ML models to predict stroke risk using attributes like hypertension, BMI, and glucose levels. Implemented classifiers including SVM, Random Forest, and XGBoost.",
+    tags: ["Machine Learning", "Python", "Data Science", "XGBoost"],
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
+    date: "Sep 2023"
   },
   {
-    title: "AI Content Generator",
-    description: "An AI-powered application that helps creators generate blog posts, captions, and marketing copy.",
-    tags: ["OpenAI API", "React", "Node.js", "Stripe"],
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-    demoLink: "#",
-    codeLink: "#"
+    title: "University Adhoc Website",
+    description: "Engineered a web-based application to optimize student-educator engagement with an intuitive interface and interactive functionalities.",
+    tags: ["HTML", "CSS", "Bootstrap", "JavaScript"],
+    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800",
+    date: "Feb 2023"
+  },
+  {
+    title: "Snake Game Using Java",
+    description: "Developed using OOP concepts and Java Swing. Integrated functionalities for multidirectional movement and dynamic length augmentation.",
+    tags: ["Java", "OOP", "Swing", "Game Dev"],
+    image: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&q=80&w=800",
+    date: "Nov 2022"
+  },
+  {
+    title: "Super Market Billing Project",
+    description: "User-friendly software for efficient and accurate billing in supermarket environments built with C++.",
+    tags: ["C++", "Billing System", "Console App"],
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&q=80&w=800",
+    date: "Jan 2020"
   }
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 bg-secondary/30">
+    <section id="projects" className="py-24 bg-background">
       <div className="container-padding">
         <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Academic Projects</h2>
           <p className="text-muted-foreground max-w-2xl">
-            A selection of projects that demonstrate my passion for building clean, efficient, and scalable software.
+            A showcase of my practical applications of theory, ranging from robotics and ML to web development and system programming.
           </p>
         </div>
 
@@ -50,33 +61,20 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full overflow-hidden border-border/50 hover:border-primary/50 transition-colors group bg-background">
+              <Card className="h-full overflow-hidden border-border/50 hover:border-primary/50 transition-colors group bg-secondary/5">
                 <div className="aspect-video overflow-hidden bg-muted relative">
                   <img 
                     src={project.image} 
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                    <a 
-                      href={project.demoLink}
-                      className="p-3 bg-white text-black rounded-full hover:scale-110 transition-transform"
-                      title="View Demo"
-                    >
-                      <ExternalLink className="h-5 w-5" />
-                    </a>
-                    <a 
-                      href={project.codeLink}
-                      className="p-3 bg-white text-black rounded-full hover:scale-110 transition-transform"
-                      title="View Code"
-                    >
-                      <Github className="h-5 w-5" />
-                    </a>
+                  <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                    {project.date}
                   </div>
                 </div>
                 <CardHeader>
                   <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <CardDescription className="line-clamp-2 mt-2">
+                  <CardDescription className="line-clamp-3 mt-2">
                     {project.description}
                   </CardDescription>
                 </CardHeader>

@@ -9,11 +9,9 @@ export default function Navbar() {
 
   const links = [
     { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
-    { name: "Certifications", href: "#certifications" },
-    { name: "Roadmap", href: "#roadmap" },
+    { name: "Publications", href: "#publications" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -30,7 +28,7 @@ export default function Navbar() {
       <div className="container-padding h-16 flex items-center justify-between">
         {/* Logo */}
         <div className="font-mono text-xl font-bold tracking-tighter cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          AD.
+          AR.
         </div>
 
         {/* Desktop Navigation */}

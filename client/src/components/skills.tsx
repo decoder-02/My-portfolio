@@ -1,30 +1,30 @@
 import { motion } from "framer-motion";
-import { Code2, Database, Layout, Terminal, PenTool, GitBranch, Cpu, Globe } from "lucide-react";
+import { Code2, Database, Layout, Terminal, Globe, ChartBar, Layers, Wrench } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "Frontend Excellence",
+    title: "Programming Languages",
+    icon: Code2,
+    description: "Core languages for building robust logic.",
+    skills: ["Java", "C", "Python", "TypeScript", "JavaScript"]
+  },
+  {
+    title: "Web Technologies",
     icon: Layout,
-    description: "Building responsive, accessible, and performant UIs.",
-    skills: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Framer Motion", "Three.js"]
+    description: "Modern stack for responsive web applications.",
+    skills: ["HTML", "CSS", "Bootstrap", "JQuery", "NodeJS", "ExpressJS", "REST API"]
   },
   {
-    title: "Backend Architecture",
-    icon: Database,
-    description: "Designing scalable APIs and efficient data structures.",
-    skills: ["Node.js", "PostgreSQL", "Redis", "GraphQL", "Python", "Go"]
+    title: "Data & Analytics",
+    icon: ChartBar,
+    description: "Tools for data visualization and analysis.",
+    skills: ["SQL", "PostgreSQL", "Adobe Analytics", "Google Analytics", "Excel VBA"]
   },
   {
-    title: "DevOps & Cloud",
-    icon: Globe,
-    description: "Deploying, monitoring, and scaling applications.",
-    skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Terraform", "Linux"]
-  },
-  {
-    title: "Tools & Workflow",
-    icon: Terminal,
-    description: "Optimizing development velocity and code quality.",
-    skills: ["Git", "Jest", "Figma", "Webpack", "Vite", "Agile"]
+    title: "Tools & DevOps",
+    icon: Wrench,
+    description: "Workflow optimization and version control.",
+    skills: ["Git", "GitHub", "Maven", "Gradle", "JMeter", "Jasmine & Karma", "AWS"]
   }
 ];
 
@@ -43,7 +43,7 @@ export default function Skills() {
               viewport={{ once: true }}
               className="text-3xl md:text-5xl font-bold mb-6"
             >
-              Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">Arsenal</span>
+              Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">Skills</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -52,7 +52,7 @@ export default function Skills() {
               transition={{ delay: 0.1 }}
               className="text-muted-foreground text-lg"
             >
-              I don't just write code; I architect solutions. Here are the tools I use to turn complex problems into elegant software.
+              My comprehensive toolkit for full-stack development and data analysis.
             </motion.p>
           </div>
           
@@ -63,7 +63,7 @@ export default function Skills() {
             transition={{ delay: 0.2 }}
             className="hidden md:block"
           >
-            <Cpu className="w-24 h-24 text-primary/10" />
+            <Layers className="w-24 h-24 text-primary/10" />
           </motion.div>
         </div>
 
