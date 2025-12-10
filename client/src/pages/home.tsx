@@ -1,5 +1,7 @@
 import Navbar from "@/components/navbar";
 import Hero from "@/components/hero";
+import Skills from "@/components/skills";
+import Experience from "@/components/experience";
 import Projects from "@/components/projects";
 import Certifications from "@/components/certifications";
 import Roadmap from "@/components/roadmap";
@@ -12,6 +14,8 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Skills />
+        <Experience />
         <Projects />
         <Certifications />
         <Roadmap />
