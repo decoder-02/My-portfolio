@@ -16,7 +16,7 @@ export default function Publications() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="p-8 rounded-3xl bg-background border border-border shadow-lg max-w-4xl"
+          className="p-8 rounded-3xl bg-background border border-border shadow-lg w-full"
         >
           <div className="flex items-start gap-4">
             <div className="shrink-0 w-12 h-12 bg-blue-500/10 text-blue-600 rounded-xl flex items-center justify-center">

@@ -12,12 +12,12 @@ export default function Education() {
           </p>
         </div>
 
-        <div className="space-y-8 max-w-4xl">
+        <div className="space-y-8 w-full">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col md:flex-row gap-6 p-8 rounded-3xl bg-secondary/10 border border-border/50"
+            className="flex flex-col md:flex-row gap-6 p-8 rounded-3xl bg-secondary/10 border border-border/50 w-full"
           >
             <div className="shrink-0 w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
               <GraduationCap className="w-8 h-8" />
