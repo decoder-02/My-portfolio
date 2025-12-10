@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Code } from "lucide-react";
+import { ExternalLink, Github, Code, ChevronDown, ChevronUp } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const projects = [
   {
@@ -42,6 +44,9 @@ const projects = [
 ];
 
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? projects : projects.slice(0, 6);
+
   return (
     <section id="projects" className="py-24 bg-background">
       <div className="container-padding">
@@ -53,34 +58,34 @@ export default function Projects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full overflow-hidden border-border/50 hover:border-primary/50 transition-colors group bg-secondary/5">
+              <Card className="h-full overflow-hidden border-border/50 hover:border-primary/50 transition-all duration-300 group bg-secondary/5 hover:shadow-lg hover:-translate-y-1 rounded-3xl">
                 <div className="aspect-video overflow-hidden bg-muted relative">
                   <img 
                     src={project.image} 
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                  <div className="absolute top-2 right-2 bg-black/70 text-white text-xs font-mono px-2 py-1 rounded-full backdrop-blur-sm">
                     {project.date}
                   </div>
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <CardDescription className="line-clamp-3 mt-2">
+                <CardHeader className="p-6">
+                  <CardTitle className="text-xl font-bold">{project.title}</CardTitle>
+                  <CardDescription className="line-clamp-3 mt-3 text-muted-foreground leading-relaxed">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
-                <CardFooter className="flex flex-wrap gap-2 mt-auto">
+                <CardFooter className="p-6 pt-0 flex flex-wrap gap-2 mt-auto">
                   {project.tags.map(tag => (
-                    <Badge key={tag} variant="secondary" className="font-mono text-xs font-normal">
+                    <Badge key={tag} variant="secondary" className="font-mono text-xs font-medium px-2 py-1 bg-secondary/50 border-border/50">
                       {tag}
                     </Badge>
                   ))}
@@ -89,6 +94,31 @@ export default function Projects() {
             </motion.div>
           ))}
         </div>
+
+        {projects.length > 6 && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-12 flex justify-center"
+          >
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => setShowAll(!showAll)}
+              className="rounded-full px-8 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+            >
+              {showAll ? (
+                <>
+                  Show Less <ChevronUp className="ml-2 h-4 w-4" />
+                </>
+              ) : (
+                <>
+                  Show More ({projects.length - 6} more) <ChevronDown className="ml-2 h-4 w-4" />
+                </>
+              )}
+            </Button>
+          </motion.div>
+        )}
       </div>
     </section>
   );

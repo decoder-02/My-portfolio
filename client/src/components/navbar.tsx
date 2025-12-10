@@ -1,11 +1,21 @@
 import { Link } from "wouter";
 import { Menu, X, Github, Linkedin, Twitter } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const links = [
     { name: "About", href: "#about" },
@@ -24,63 +34,89 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
-      <div className="container-padding h-16 flex items-center justify-between">
+    <motion.nav 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? "bg-background/80 backdrop-blur-md border-b border-border/40 shadow-sm py-2" 
+          : "bg-transparent py-4"
+      }`}
+    >
+      <div className="container-padding flex items-center justify-between">
         {/* Logo */}
-        <div className="font-mono text-xl font-bold tracking-tighter cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          AR.
+        <div 
+          className="font-mono text-xl font-bold tracking-tighter cursor-pointer flex items-center gap-2" 
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          <div className="w-8 h-8 bg-primary text-primary-foreground rounded-lg flex items-center justify-center">
+            AR
+          </div>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-1 bg-secondary/50 p-1 rounded-full border border-border/50 backdrop-blur-sm">
           {links.map((link) => (
             <button
               key={link.name}
               onClick={() => scrollToSection(link.href)}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-background rounded-full transition-all duration-200"
             >
               {link.name}
             </button>
           ))}
-          <div className="h-4 w-px bg-border mx-2" />
-          <div className="flex items-center gap-4">
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-              <Github className="h-5 w-5" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-              <Linkedin className="h-5 w-5" />
-            </a>
-          </div>
+        </div>
+
+        <div className="hidden md:flex items-center gap-3">
+          <a 
+            href="https://github.com" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="p-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-full transition-colors"
+          >
+            <Github className="h-5 w-5" />
+          </a>
+          <a 
+            href="https://linkedin.com" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="p-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-full transition-colors"
+          >
+            <Linkedin className="h-5 w-5" />
+          </a>
         </div>
 
         {/* Mobile Navigation */}
         <div className="md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="hover:bg-secondary rounded-full">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] border-l border-border/50">
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex flex-col gap-6 mt-10">
-                {links.map((link) => (
-                  <button
+                {links.map((link, index) => (
+                  <motion.button
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
                     key={link.name}
                     onClick={() => scrollToSection(link.href)}
-                    className="text-lg font-medium text-left hover:text-primary transition-colors"
+                    className="text-2xl font-bold text-left hover:text-primary transition-colors flex items-center justify-between group"
                   >
                     {link.name}
-                  </button>
+                    <span className="w-2 h-2 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </motion.button>
                 ))}
-                <div className="flex gap-4 mt-4">
-                  <a href="https://github.com" className="p-2 bg-secondary rounded-full">
-                    <Github className="h-5 w-5" />
+                <div className="h-px bg-border my-4" />
+                <div className="flex gap-4 justify-center">
+                  <a href="https://github.com" className="p-3 bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors rounded-full">
+                    <Github className="h-6 w-6" />
                   </a>
-                  <a href="https://linkedin.com" className="p-2 bg-secondary rounded-full">
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-                  <a href="https://twitter.com" className="p-2 bg-secondary rounded-full">
-                    <Twitter className="h-5 w-5" />
+                  <a href="https://linkedin.com" className="p-3 bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors rounded-full">
+                    <Linkedin className="h-6 w-6" />
                   </a>
                 </div>
               </div>
@@ -88,6 +124,6 @@ export default function Navbar() {
           </Sheet>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
