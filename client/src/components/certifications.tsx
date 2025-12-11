@@ -66,10 +66,10 @@ export default function Certifications() {
   const visibleCertifications = showAll ? certifications : certifications.slice(0, 6);
 
   return (
-    <section id="certifications" className="py-24 bg-secondary/20">
+    <section id="certifications" className="py-16 bg-secondary/20">
       <div className="container-padding">
-        <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Certifications</h2>
+        <div className="mb-8">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4">Certifications</h2>
           <p className="text-muted-foreground max-w-2xl">
             Continuous learning is part of the journey. Here are the professional milestones I've reached.
           </p>

@@ -129,6 +129,11 @@
   }
 }
 
+/* Reduce base font-size slightly on small screens for better fit */
+@media (max-width: 640px) {
+  html { font-size: 14px; }
+}
+
 /* Custom Utilities for Polish */
 @layer utilities {
   .text-balance {

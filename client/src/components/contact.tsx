@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Mail, MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,26 +29,45 @@ export default function Contact() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
-    form.reset();
+    return (async () => {
+      try {
+        setIsSending(true);
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.message || "Failed to send message");
+
+        toast({
+          title: "Message sent!",
+          description: "Thanks for reaching out. I'll get back to you soon.",
+        });
+        form.reset();
+      } catch (err: any) {
+        console.error("Contact submit error:", err);
+        toast({ title: "Unable to send", description: err?.message || "Please try again later." });
+      } finally {
+        setIsSending(false);
+      }
+    })();
   }
 
+  const [isSending, setIsSending] = useState(false);
+
   return (
-    <section id="contact" className="py-24 bg-secondary/30">
+    <section id="contact" className="py-16 bg-secondary/30">
       <div className="container-padding">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's work together</h2>
-            <p className="text-muted-foreground text-lg mb-8">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4">Let's work together</h2>
+            <p className="text-muted-foreground text-lg mb-6">
               I'm always interested in hearing about new projects and opportunities.
               Whether you have a question or just want to say hi, feel free to drop me a message.
             </p>
@@ -59,7 +79,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Email</p>
-                  <p className="font-medium">alex.dev@example.com</p>
+                  <p className="font-medium">akashrajrad@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -68,7 +88,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Location</p>
-                  <p className="font-medium">San Francisco, CA</p>
+                  <p className="font-medium">Chennai, India</p>
                 </div>
               </div>
             </div>
@@ -91,7 +111,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="John Doe" {...field} className="bg-secondary/20" />
+                            <Input placeholder="Akash" {...field} className="bg-secondary/20" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -104,7 +124,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Email</FormLabel>
                           <FormControl>
-                            <Input placeholder="john@example.com" {...field} className="bg-secondary/20" />
+                            <Input placeholder="ak@example.com" {...field} className="bg-secondary/20" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -127,8 +147,8 @@ export default function Contact() {
                         </FormItem>
                       )}
                     />
-                    <Button type="submit" className="w-full">
-                      <Send className="mr-2 h-4 w-4" /> Send Message
+                    <Button type="submit" className="w-full" disabled={isSending}>
+                      <Send className="mr-2 h-4 w-4" /> {isSending ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
                 </Form>

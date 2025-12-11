@@ -30,20 +30,20 @@ const skillCategories = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 relative overflow-hidden">
+    <section id="skills" className="py-16 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 transform origin-top translate-x-1/2 -z-10" />
       
       <div className="container-padding">
-        <div className="mb-16 md:flex md:justify-between md:items-end">
+        <div className="mb-8 md:flex md:justify-between md:items-end">
           <div className="max-w-2xl">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-5xl font-bold mb-6"
+              className="text-2xl md:text-4xl font-bold mb-4"
             >
-              Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">Skills</span>
+                Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">Skills</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}

@@ -3,11 +3,18 @@ import { Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
   {
+    role: "Associate Software Engineer",
+    company: "PURCHASING POWER",
+    period: "Present",
+    description: "Currently working as an Associate Software Engineer.",
+    technologies: ["Angular", "Typescript", "Java", "Spring Boot", "OracleSQL"]
+  },
+  {
     role: "Data Analyst",
     company: "PURCHASING POWER",
     period: "May 2024",
     description: "Analyzed data sets to identify trends and patterns, contributing to data-driven decision making processes.",
-    technologies: ["Data Analysis", "Reporting"]
+    technologies: ["Adobe Analytics", "Google Analytics", "Reporting"]
   },
   {
     role: "Full Stack Java",
@@ -27,16 +34,16 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 bg-secondary/20">
+    <section id="experience" className="py-16 bg-secondary/20">
       <div className="container-padding">
-        <div className="mb-16">
+        <div className="mb-8">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-2xl md:text-4xl font-bold mb-4"
           >
-            Internship Experience
+            Experience
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -45,11 +52,11 @@ export default function Experience() {
             transition={{ delay: 0.1 }}
             className="text-muted-foreground max-w-2xl"
           >
-            Professional experience gained through internships in various domains.
+            Professional experience gained through internships/works in various domains.
           </motion.p>
         </div>
 
-        <div className="relative border-l border-border ml-3 md:ml-6 space-y-12">
+        <div className="relative border-l border-border ml-3 md:ml-6 space-y-8">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}

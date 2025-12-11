@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Menu, X, Github, Linkedin, Twitter } from "lucide-react";
+import { Menu, X, Github, Linkedin, User, Briefcase, Code, Book, Mail } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
@@ -24,6 +24,14 @@ export default function Navbar() {
     { name: "Publications", href: "#publications" },
     { name: "Contact", href: "#contact" },
   ];
+
+  const linkIcons: Record<string, any> = {
+    About: User,
+    Experience: Briefcase,
+    Projects: Code,
+    Publications: Book,
+    Contact: Mail,
+  };
 
   const scrollToSection = (id: string) => {
     const element = document.querySelector(id);
@@ -69,7 +77,7 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-3">
           <a 
-            href="https://github.com" 
+            href="https://github.com/starboi03" 
             target="_blank" 
             rel="noreferrer" 
             className="p-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-full transition-colors"
@@ -77,7 +85,7 @@ export default function Navbar() {
             <Github className="h-5 w-5" />
           </a>
           <a 
-            href="https://linkedin.com" 
+            href="https://www.linkedin.com/in/akash-r-sjitbps/" 
             target="_blank" 
             rel="noreferrer" 
             className="p-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-full transition-colors"
@@ -96,30 +104,51 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px] border-l border-border/50">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-              <div className="flex flex-col gap-6 mt-10">
-                {links.map((link, index) => (
-                  <motion.button
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    key={link.name}
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-2xl font-bold text-left hover:text-primary transition-colors flex items-center justify-between group"
-                  >
-                    {link.name}
-                    <span className="w-2 h-2 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </motion.button>
-                ))}
-                <div className="h-px bg-border my-4" />
-                <div className="flex gap-4 justify-center">
-                  <a href="https://github.com" className="p-3 bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors rounded-full">
-                    <Github className="h-6 w-6" />
-                  </a>
-                  <a href="https://linkedin.com" className="p-3 bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors rounded-full">
-                    <Linkedin className="h-6 w-6" />
-                  </a>
+                <div className="flex flex-col gap-6 mt-6 px-4">
+                  {/* Sheet header: logo + close */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-primary text-primary-foreground rounded-lg flex items-center justify-center font-mono font-bold">AR</div>
+                      <div>
+                        <div className="text-sm font-semibold">Akash Raj</div>
+                        <div className="text-xs text-muted-foreground">Portfolio & Projects</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-2" />
+
+                  <nav className="flex flex-col gap-2">
+                    {links.map((link, index) => {
+                      const Icon = linkIcons[link.name];
+                      return (
+                        <motion.button
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.06 }}
+                          key={link.name}
+                          onClick={() => scrollToSection(link.href)}
+                          className="w-full flex items-center gap-3 text-lg font-medium p-3 rounded-lg hover:bg-secondary/60 transition-colors"
+                        >
+                          <Icon className="h-5 w-5 text-muted-foreground" />
+                          <span className="flex-1 text-left">{link.name}</span>
+                          <span className="text-sm text-muted-foreground">→</span>
+                        </motion.button>
+                      );
+                    })}
+                  </nav>
+
+                  <div className="h-px bg-border my-4" />
+
+                  <div className="flex gap-4 justify-center">
+                    <a href="https://github.com/starboi03" className="p-3 bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors rounded-full">
+                      <Github className="h-5 w-5" />
+                    </a>
+                    <a href="https://www.linkedin.com/in/akash-r-sjitbps/" className="p-3 bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors rounded-full">
+                      <Linkedin className="h-5 w-5" />
+                    </a>
+                  </div>
                 </div>
-              </div>
             </SheetContent>
           </Sheet>
         </div>

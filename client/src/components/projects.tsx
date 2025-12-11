@@ -24,21 +24,21 @@ const projects = [
     title: "University Adhoc Website",
     description: "Engineered a web-based application to optimize student-educator engagement with an intuitive interface and interactive functionalities.",
     tags: ["HTML", "CSS", "Bootstrap", "JavaScript"],
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800",
+    image: "https://ummetro.ac.id/wp-content/uploads/2025/05/Design-Web-4.png",
     date: "Feb 2023"
   },
   {
     title: "Snake Game Using Java",
     description: "Developed using OOP concepts and Java Swing. Integrated functionalities for multidirectional movement and dynamic length augmentation.",
     tags: ["Java", "OOP", "Swing", "Game Dev"],
-    image: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&q=80&w=800",
+    image: "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/22788252/snekcrop.jpeg?q=50&fit=crop&w=1600&h=900&dpr=1.5",
     date: "Nov 2022"
   },
   {
     title: "Super Market Billing Project",
     description: "User-friendly software for efficient and accurate billing in supermarket environments built with C++.",
     tags: ["C++", "Billing System", "Console App"],
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&q=80&w=800",
+    image: "https://www.logicerp.com/blog/wp-content/uploads/2025/11/Blog-Banner-71.jpg",
     date: "Jan 2020"
   }
 ];
@@ -48,10 +48,10 @@ export default function Projects() {
   const visibleProjects = showAll ? projects : projects.slice(0, 6);
 
   return (
-    <section id="projects" className="py-24 bg-background">
+    <section id="projects" className="py-16 bg-background">
       <div className="container-padding">
-        <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Academic Projects</h2>
+        <div className="mb-8">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4">Academic Projects</h2>
           <p className="text-muted-foreground max-w-2xl">
             A showcase of my practical applications of theory, ranging from robotics and ML to web development and system programming.
           </p>

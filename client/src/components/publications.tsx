@@ -3,10 +3,10 @@ import { FileText, Link2 } from "lucide-react";
 
 export default function Publications() {
   return (
-    <section id="publications" className="py-24 bg-primary/5">
+    <section id="publications" className="py-16 bg-secondary/20">
       <div className="container-padding">
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Publications</h2>
+        <div className="mb-8">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4">Publications</h2>
           <p className="text-muted-foreground max-w-2xl">
             Research contributions and conference papers.
           </p>

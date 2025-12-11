@@ -1,26 +1,14 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
-
 export default function Footer() {
   return (
-    <footer className="py-12 border-t border-border">
-      <div className="container-padding flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="text-center md:text-left">
-          <p className="font-bold text-lg mb-2">Alex Dev</p>
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} All rights reserved.
-          </p>
+    <footer className="py-8 border-t border-border bg-background/5">
+      <div className="container-padding max-w-4xl mx-auto text-center">
+        <div className="mb-3">
+          <p className="text-base font-semibold">Akash Rajkumar</p>
+          <p className="text-sm text-muted-foreground mt-1">Full-stack engineer focused on building reliable, maintainable web apps</p>
         </div>
 
-        <div className="flex items-center gap-6">
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-            <Github className="h-5 w-5" />
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-            <Linkedin className="h-5 w-5" />
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-            <Twitter className="h-5 w-5" />
-          </a>
+        <div className="mt-4">
+          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} • All rights reserved</p>
         </div>
       </div>
     </footer>

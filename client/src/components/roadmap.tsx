@@ -3,37 +3,57 @@ import { Lightbulb, Rocket, Target, Zap, Circle } from "lucide-react";
 
 const roadmapItems = [
   {
-    title: "Exploring WebAssembly",
-    status: "In Progress",
-    description: "Deep diving into Rust and WASM to build high-performance web modules for image processing.",
-    icon: Zap,
+    title: "Current Focus",
+    status: "Active",
+    description: [
+      "Strengthen full‑stack foundations: Java, Angular, Node.js, SQL, RxJS",
+      "Build scalable web apps with performance and reliability in mind",
+      "Practice problem‑solving patterns and edge‑case handling",
+      "Share knowledge via technical writing and developer education"
+    ],
+    icon: Lightbulb,
     color: "text-amber-500",
     bg: "bg-amber-500/10",
     border: "border-amber-500/20"
   },
   {
-    title: "AI-Driven UX Patterns",
-    status: "Planning",
-    description: "Researching how generative AI can dynamically adapt user interfaces based on user behavior and context.",
-    icon: Lightbulb,
+    title: "Planning (Near‑Term Goals)",
+    status: "Planned",
+    description: [
+      "Deep dive into cloud platforms: AWS, Azure, GCP",
+      "Adopt DevOps practices: CI/CD, Docker, Kubernetes",
+      "Improve system design: APIs, microservices, distributed systems",
+      "Enhance UI/UX troubleshooting, responsive design, and accessibility"
+    ],
+    icon: Rocket,
     color: "text-blue-500",
     bg: "bg-blue-500/10",
     border: "border-blue-500/20"
   },
   {
-    title: "Decentralized Identity",
-    status: "Future Idea",
-    description: "Prototyping a privacy-first authentication system using self-sovereign identity principles.",
-    icon: Target,
+    title: "Ongoing Exploration",
+    status: "Ongoing",
+    description: [
+      "Experiment with automation workflows and document pipeline protections",
+      "Engage with developer communities via blogs, posts, and OSS contributions",
+      "Polish technical content: diagrams, analogies, and visual clarity",
+      "Refine test design and verification strategies"
+    ],
+    icon: Zap,
     color: "text-emerald-500",
     bg: "bg-emerald-500/10",
     border: "border-emerald-500/20"
   },
   {
-    title: "Open Source Contribution",
-    status: "Ongoing",
-    description: "Looking to contribute to major React ecosystem libraries to give back to the community.",
-    icon: Rocket,
+    title: "Future Ideas (Visionary Path)",
+    status: "Vision",
+    description: [
+      "Integrate AI/ML into apps: recommendations and anomaly detection",
+      "Explore advanced security: post‑quantum cryptography and secure workflows",
+      "Build developer tools for debugging, tracing, and team alignment",
+      "Lead community education through workshops and mentorship"
+    ],
+    icon: Target,
     color: "text-purple-500",
     bg: "bg-purple-500/10",
     border: "border-purple-500/20"
@@ -110,9 +130,11 @@ export default function Roadmap() {
                       </span>
                     </div>
                     <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed text-sm">
-                      {item.description}
-                    </p>
+                    <ul className="list-disc ml-5 space-y-1 text-sm text-muted-foreground leading-relaxed">
+                      {item.description.map((point: string, i: number) => (
+                        <li key={i}>{point}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
