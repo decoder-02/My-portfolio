@@ -18,17 +18,17 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // When the sheet closes and there is a pending scroll target, scroll to it.
-  useEffect(() => {
-    if (!isOpen && pendingScroll) {
-      const el = document.querySelector(pendingScroll);
-      if (el) {
-        // wait for the sheet to finish closing & for layout to update
-        requestAnimationFrame(() => requestAnimationFrame(() => el.scrollIntoView({ behavior: "smooth" })));
-      }
-      setPendingScroll(null);
-    }
-  }, [isOpen, pendingScroll]);
+  // // When the sheet closes and there is a pending scroll target, scroll to it.
+  // useEffect(() => {
+  //   if (!isOpen && pendingScroll) {
+  //     const el = document.querySelector(pendingScroll);
+  //     if (el) {
+  //       // wait for the sheet to finish closing & for layout to update
+  //       requestAnimationFrame(() => requestAnimationFrame(() => el.scrollIntoView({ behavior: "smooth" })));
+  //     }
+  //     setPendingScroll(null);
+  //   }
+  // }, [isOpen, pendingScroll]);
 
   const links = [
     { name: "About", href: "#about" },
@@ -115,7 +115,19 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         <div className="md:hidden">
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <Sheet 
+          open={isOpen} 
+          onOpenChange={(open) => { 
+            setIsOpen(open); 
+            if (!open && pendingScroll) { 
+              const el = document.querySelector(pendingScroll); 
+              if (el) { 
+                 setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 250); 
+                 } 
+                 setPendingScroll(null); 
+                 } 
+                 }}
+            >
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="hover:bg-secondary rounded-full">
                 <Menu className="h-6 w-6" />
