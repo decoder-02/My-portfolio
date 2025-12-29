@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Code2 } from "lucide-react";
 import heroBg from "@assets/generated_images/minimalist_abstract_geometric_background.png";
-import profilePic from "@assets/generated_images/image7.png";
+import profilePic from "@assets/generated_images/Image7.png";
 
 export default function Hero() {
   return (
