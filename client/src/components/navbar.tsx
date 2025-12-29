@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [pendingScroll, setPendingScroll] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +17,18 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // When the sheet closes and there is a pending scroll target, scroll to it.
+  useEffect(() => {
+    if (!isOpen && pendingScroll) {
+      const el = document.querySelector(pendingScroll);
+      if (el) {
+        // wait for the sheet to finish closing & for layout to update
+        requestAnimationFrame(() => requestAnimationFrame(() => el.scrollIntoView({ behavior: "smooth" })));
+      }
+      setPendingScroll(null);
+    }
+  }, [isOpen, pendingScroll]);
 
   const links = [
     { name: "About", href: "#about" },
@@ -35,9 +48,15 @@ export default function Navbar() {
 
   const scrollToSection = (id: string) => {
     const element = document.querySelector(id);
+    // If the mobile sheet is open, store the target and close the sheet.
+    if (isOpen) {
+      setPendingScroll(id);
+      setIsOpen(false);
+      return;
+    }
+
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
     }
   };
 

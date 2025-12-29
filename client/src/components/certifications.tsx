@@ -58,6 +58,11 @@ const certifications = [
     title: "Excel VBA for Beginners",
     issuer: "Great Learning",
     date: "May 2024"
+  },
+  {
+    title: "RxJs In Practice",
+    issuer: "Udemy",
+    date: "Aug 2025"
   }
 ];
 
